@@ -39,6 +39,10 @@ class BezierCurve : Shape{
     }
     
     func removePoint(_ index:Int) {
+        guard points.count > 0 && index <= points.count - 1 else {
+            return
+        }
+        
         points.remove(at: index)
         calculateCasteljauVertices()
         updateBuffers()

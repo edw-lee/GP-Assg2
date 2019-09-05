@@ -111,6 +111,10 @@ class Line : Shape{
     }
     
     func removeVertex(_ index:Int) {
+        guard vertices.count > 0 && index <= vertices.count - 1 else {
+            return
+        }
+        
         vertices.remove(at: index)
         updateBuffers()
     }

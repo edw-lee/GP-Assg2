@@ -172,11 +172,18 @@ class MainViewController: GLKViewController {
         guard selected_point_idx >= 0 else {
             return
         }
-        
+
         points.remove(at: selected_point_idx)
         point_squares.remove(at: selected_point_idx)
-        line.removeVertex(selected_point_idx)
-        bezier_curve.removePoint(selected_point_idx)
+        
+        if(line != nil) {
+            line.removeVertex(selected_point_idx)
+        }
+        
+        if(bezier_curve != nil) {
+            bezier_curve.removePoint(selected_point_idx)
+        }
+        
         selected_point_idx = -1
         
         updateState = .UPDATE
